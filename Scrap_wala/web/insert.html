@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Entry Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Images/disco.png'); /* Add your image path here */
+            background-size: cover; /* Make the image cover the entire page */
+            background-position: center center; /* Center the image */
+            background-attachment: fixed; /* Ensure the image stays fixed when scrolling */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: white; /* White text to contrast with the background */
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Items</h1>
+    <form action="Ainsert">
+        <input type="text" name="name" placeholder="Enter item name" required>
+        <input type="text" name="rate" placeholder="Enter item rate" required>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

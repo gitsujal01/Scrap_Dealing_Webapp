@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Items to Sell</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: green;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Enter Items to Sell</h2>
+
+        <!-- Success or Error Messages -->
+        <div id="message" class="message"></div>
+        <div id="error-message" class="error-message"></div>
+
+        <!-- Form to Enter Multiple Items and Weights -->
+        <form action="Sell_item" method="POST" id="itemsForm">
+            <!-- Item 1 -->
+            <label for="itemName1">Item 1 Name:</label>
+            <input type="text" id="itemName1" name="i1" required placeholder="Enter the item name" />
+
+            <label for="itemWeight1">Item 1 Weight (kg):</label>
+            <input type="number" id="itemWeight1" name="w1" required placeholder="Enter the weight of the item" min="0" step="any" />
+
+            <!-- Item 2 -->
+            <label for="itemName2">Item 2 Name:</label>
+            <input type="text" id="itemName2" name="i2" required placeholder="Enter the item name" />
+
+            <label for="itemWeight2">Item 2 Weight (kg):</label>
+            <input type="number" id="itemWeight2" name="w2" required placeholder="Enter the weight of the item" min="0" step="any" />
+
+            <!-- Item 3 -->
+            <label for="itemName3">Item 3 Name:</label>
+            <input type="text" id="itemName3" name="i3" required placeholder="Enter the item name" />
+
+            <label for="itemWeight3">Item 3 Weight (kg):</label>
+            <input type="number" id="itemWeight3" name="w3" required placeholder="Enter the weight of the item" min="0" step="any" />
+
+            <!-- Item 4 -->
+            <label for="itemName4">Item 4 Name:</label>
+            <input type="text" id="itemName4" name="i4" required placeholder="Enter the item name" />
+
+            <label for="itemWeight4">Item 4 Weight (kg):</label>
+            <input type="number" id="itemWeight4" name="w4" required placeholder="Enter the weight of the item" min="0" step="any" />
+
+            <!-- Item 5 -->
+            <label for="itemName5">Item 5 Name:</label>
+            <input type="text" id="itemName5" name="i5" required placeholder="Enter the item name" />
+
+            <label for="itemWeight5">Item 5 Weight (kg):</label>
+            <input type="number" id="itemWeight5" name="w5" required placeholder="Enter the weight of the item" min="0" step="any" />
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission and validation
+        const form = document.getElementById('itemsForm');
+        const messageDiv = document.getElementById('message');
+        const errorMessageDiv = document.getElementById('error-message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for demonstration
+
+            let formValid = true;
+            const itemNames = [];
+            const itemWeights = [];
+
+            // Collect form data
+            for (let i = 1; i <= 5; i++) {
+                const itemName = document.getElementById(`itemName${i}`).value;
+                const itemWeight = document.getElementById(`itemWeight${i}`).value;
+
+                if (!itemName || !itemWeight) {
+                    formValid = false;
+                    errorMessageDiv.textContent = "All fields must be filled!";
+                    messageDiv.textContent = ""; // Clear success message
+                    break;
+                }
+
+                itemNames.push(itemName);
+                itemWeights.push(itemWeight);
+            }
+
+            if (formValid) {
+                // Display success message with item details
+                messageDiv.textContent = `Items Submitted: ${itemNames.join(', ')} with weights ${itemWeights.join(', ')}kg.`;
+                errorMessageDiv.textContent = ""; // Clear error message
+
+                // In a real implementation, you would send this data to the backend
+                // For example, using AJAX or by submitting the form to the server
+            }
+        });
+    </script>
+
+</body>
+</html>
